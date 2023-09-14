@@ -1,0 +1,1226 @@
+@charset "utf-8";
+
+/* Normalisation supplémentaire 
+============================================================================= */
+
+/* Utilisation des sélecteurs additionnels pour les pseudo-éléments */
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+input,
+input:focus {
+  outline: none;
+  border: none;
+}
+
+/* Variables personnalisées
+============================================================*/
+:root {
+  /*Couleurs des textes*/
+  --clair: #fdf0d5;
+  --couleur1: #0f3d88;
+  --couleur2: #e04000;
+  --noir: #00011c;
+  --gris-pale: #aeaeae;
+  --gris: #7f7f7f;
+
+  /*Les épaisseurs de la police */
+  --texte: 600;
+  --titre-nav: 700;
+  --gros-titre: 800;
+
+  /*Padding ou margin de base*/
+  --espacement: 1rem;
+}
+
+/* Style général des symboles Google Material Icons
+============================================================*/
+
+/* Couleur générales des icones */
+.material-symbols-outlined {
+  color: var(--couleur1);
+}
+
+.r180deg {
+  transform: rotate(180deg);
+}
+
+.r90deg {
+  transform-origin: bottom;
+  transform: rotate(90deg);
+}
+
+.r-90deg {
+  transform: rotate(-90deg);
+}
+
+/* Style des liens général et des hovers
+============================================================*/
+
+a,
+a:visited {
+  color: var(--couleur1);
+}
+
+a:hover,
+a > .material-symbols-outlined:hover,
+.material-symbols-outlined:hover,
+a:active,
+a > .material-symbols-outlined:active,
+.material-symbols-outlined:active {
+  color: var(--couleur2);
+  transform: scale(1.2);
+}
+
+header a,
+nav-lien {
+  text-transform: uppercase;
+}
+
+/* Mise en page pour les petits périphériques
+        ==================================================================================================================== */
+/* Mise en page générale
+============================================================================================================================*/
+
+html {
+  width: 100vw;
+  font-family: "Inconsolata", monospace;
+  font-size: clamp(16px, var(--espacement) + 1.6vw, 24px);
+  background-color: var(--clair);
+}
+
+body {
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+  /*Conteneur flex en rangée*/
+  display: flex;
+  flex-direction: column;
+  /* Pas de défilement horizontale (menu déplacé au delà du viewport) */
+  overflow-x: hidden;
+}
+
+p {
+  font-size: 0.8rem;
+}
+
+/* HEADER FIXE
+=============================================================================== */
+
+header {
+  width: 100%;
+  position: fixed;
+  height: 10vh;
+  top: 0;
+  left: 0;
+  padding: 0.5rem 1.4rem 0.4rem var(--espacement);
+  background-color: var(--couleur1);
+  /*Conteneur FLEX (et enfants et sous-enfants plus bas) */
+  display: flex;
+  flex-direction: column;
+  /* est au-dessus de tout */
+  z-index: 100;
+}
+
+/* ==================== H1 H1 H1 ================================
+===========================================================================*/
+
+.nom {
+  /*on retire le h1 du flux normal*/
+  position: absolute;
+  /*le header est de 10vh */
+  top: 9vh;
+  left: 0;
+  font-size: 1.7rem;
+  font-weight: var(--gros-titre);
+  color: var(--clair);
+  padding-left: 1.4rem;
+
+  /*pour le menu burger */
+  transition: color 600ms, font-size 400ms, transform 100ms;
+}
+
+.slogan-accueil {
+  /*on retire le h2 du flux normal*/
+  position: absolute;
+  top: 16.8vh;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  color: var(--gris);
+  animation: anim-slogan 40s infinite linear;
+  z-index: 1000;
+}
+
+/*Animation de défilement */
+@keyframes anim-slogan {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.accueil-rq {
+  display: none;
+}
+
+/* Fonction JS apparaitre et disparaitre 
+ ****************************************
+ ================Quand le main touche h1 et h2, on les masque */
+.apparition {
+  opacity: 1;
+  transition: opacity 400ms;
+}
+
+.disparition {
+  opacity: 0;
+  transition: opacity 400ms;
+}
+
+/* Header divisé en 3 parties (excluant la barre des langues)
+=================================================================*/
+
+.header-barre {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-barre-gauche,
+.header-barre-centre,
+.header-barre-droite {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+#procedes,
+#produits,
+#faq {
+  display: none;
+}
+
+/* le lien pour l'accueil n'est pas visible sur téléphone */
+#accueil {
+  font-weight: var(--gros-titre);
+  font-size: 1.2rem;
+  text-align: right;
+  text-transform: none;
+  justify-content: flex-start;
+  padding-bottom: 0.6rem;
+  opacity: 0;
+}
+
+/* le sous-titre n'est pas visible sur téléphone */
+.barre-sous-titre {
+  font-size: 0.4rem;
+  color: var(--gris);
+  text-align: center;
+  opacity: 0;
+}
+
+.icone-menu {
+  transform: scaleY(120%);
+  font-size: 2rem;
+  color: var(--noir);
+}
+
+#compte {
+  letter-spacing: 0.18rem;
+}
+
+#compte a,
+.icone-recherche,
+.icone-panier,
+.icone-descendre {
+  color: var(--clair);
+}
+
+.header-barre-droite-gr2 {
+  display: flex;
+}
+
+.header-barre-droite-gr2 .material-symbols-outlined {
+  font-size: 1.2rem;
+}
+
+/* MENU BURGER - Case à cocher
+======================================================================================================*/
+
+/* on cache la case à cocher */
+#cc-menu-burger {
+  display: none;
+}
+
+/*icones du menu */
+.bouton-icone-ouvrir {
+  position: relative;
+  /* le curseur change */
+  cursor: pointer;
+  transition: opacity 200ms;
+}
+
+.bouton-icone-fermer {
+  position: absolute;
+  left: 1rem;
+  opacity: 0;
+  transition: opacity 200ms;
+  /* le curseur change */
+  cursor: pointer;
+}
+
+/* le conteneur de l'écran du menu */
+.menu-burger-conteneur {
+  top: 10vh;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  background-color: var(--clair);
+  /*Au démarrage le menu n'est pas visible*/
+  opacity: 0;
+  transition: opacity 200ms;
+  /*IMPORTANT - Empêcher que le contenu attrape les clics de souris...*/
+  pointer-events: none;
+}
+
+.nav-conteneur {
+  padding-left: 2.6rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  margin-top: 15vh;
+}
+
+/* les liens */
+.nav-conteneur li {
+  padding-bottom: 0.6rem;
+}
+
+/* Material icon Return, qui suit le lien*/
+.icone-icone-retour {
+  position: absolute;
+  margin-left: 0.8rem;
+}
+
+.nav-conteneur a {
+color: var(--couleur1);
+} 
+
+.nav-conteneur a:hover,
+.nav-conteneur a:hover .icone-retour,
+.icone-retour:hover,
+.nav-conteneur a:active,
+.nav-conteneur a:active .icone-retour,
+.icone-retour:active {
+  color: var(--clair);
+  font-size: 1.1rem;
+  transition: font-size 400ms;
+}
+
+.nav-conteneur a:hover .icone-retour,
+.nav-conteneur a:active .icone-retour {
+  transform: rotate(-90deg) translateX(-0.15rem);
+}
+
+/* Choix de langues
+============================================================*/
+
+.nav-langue {
+  position: fixed;
+  bottom: 5vh;
+  left: 1.4rem;
+  display: none;
+  gap: 0.4rem;
+  z-index: 1000;
+}
+
+.nav-langue-lien {
+  width: 1.2rem;
+  height: 1.3rem;
+  background-color: var(--gris);
+  border-radius: 48%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-langue a {
+  color: var(--clair);
+  font-size: 0.6rem;
+}
+
+/* le style du lien FR est inversé */
+.langue-active,
+.nav-langue-lien:hover,
+.nav-langue-lien:active {
+  background-color: var(--couleur1);
+}
+
+/* Boîte de recherche
+===========================================================================*/
+
+.boite-recherche {
+  position: absolute;
+  width: 68%;
+  top: 2rem;
+  left: 18%;
+  padding: 0.5rem 0.2rem;
+  background-color: var(--clair);
+  border: 0.1rem solid var(--couleur1);
+  display: flex;
+  /*va arriver par le haut lorsque la case à cocher menu burger sera cochée*/
+  transform: translateY(-5rem);
+  transition: transform 400ms 100ms;
+  z-index: 1000;
+}
+
+.boite-recherche > div {
+  display: flex;
+}
+
+.recherche-input {
+  width: 85%;
+}
+
+.boite-recherche input[type="text"] {
+  width: 100%;
+  font-size: 0.6rem;
+  background-color: var(--clair);
+}
+
+.boite-recherche .icone-recherche {
+  color: var(--couleur1);
+  padding-right: 0.8rem;
+}
+
+.icone-recherche:hover {
+  color: #e04000;
+}
+
+/***************************************************** QUAND LA CASE À COCHER EST COCHÉE *************************************/
+
+/* le menu devient visible */
+#cc-menu-burger:checked + header > .menu-burger-conteneur {
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+  transition: opacity 400ms;
+
+  /*on remet le contenu attrape les clics de souris*/
+  pointer-events: all;
+}
+
+/*le h1 reste visible */
+#cc-menu-burger:checked + header .nom {
+  display: block;
+  transform: translateY(1.6rem);
+  font-size: 1.8rem;
+  color: var(--couleur1);
+ 
+  /*JS pur mettre visible*/
+  opacity: 1;
+  z-index: 1000;
+}
+
+/*on enlève le h2*/
+#cc-menu-burger:checked + header .slogan-accueil {
+  display: none;
+}
+
+/* le choix de langue flex en rangée */
+#cc-menu-burger:checked + header > .nav-langue {
+  display: flex;
+}
+
+/* le bouton du menu change */
+#cc-menu-burger:checked + header > div .bouton-icone-ouvrir {
+  opacity: 0;
+}
+
+#cc-menu-burger:checked + header > div .bouton-icone-fermer {
+  opacity: 1;
+}
+
+/* on cache les balises main et footer */
+#cc-menu-burger:checked + header + main,
+#cc-menu-burger:checked + header + footer {
+  display: none;
+}
+
+/* on enlève la loupe et la flèche vers le footer */
+#cc-menu-burger:checked + header > div .header-barre-droite .fleche-haut-bas,
+#cc-menu-burger:checked + header > div .header-barre-droite #recherche {
+  display: none;
+}
+
+/* on déplace l'icone du panier vers la gauche*/
+#cc-menu-burger:checked + header > div .header-droite-gr2 {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* la zone/boîte de recherche devient visible */
+#cc-menu-burger:checked + header .boite-recherche {
+  transform: translateY(0rem);
+}
+
+/* MAIN
+         ======================================================================================================================================*/
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: var(--clair);
+}
+
+
+
+/* SECTION
+         =================================================================================================*/
+/* Écran d'accueil 
+===================================================================================*/
+
+section {
+  width: 100vw;
+}
+
+.ecran-accueil {
+  background-color: var(--couleur1);
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.boite-accueil:first-child {
+  margin-top: 4rem;
+}
+
+.accueil-h3 {
+  color: var(--clair);
+  font-weight: var(--gros-titre);
+  font-size: 3.1rem;
+  text-transform: uppercase;
+
+  padding-left: 1rem;
+  transform-origin: left;
+  transition: transform 400ms, color 200ms;
+}
+
+.boite-accueil:hover .accueil-h3,
+.boite-accueil:active .accueil-h3 {
+  color: var(--couleur2);
+  transform: scale(1.4);
+  cursor: pointer;
+}
+
+.fleche-accueil {
+  color: var(--couleur2);
+  padding-left: 1.5rem;
+  font-size: 2.2rem;
+  transform: scaleX(1.4);
+  transform-origin: right;
+  transition: transform 200ms;
+}
+
+.boite-accueil:hover .fleche-accueil,
+.boite-accueil:active .fleche-accueil {
+  transform: scale(1.7, 1.3) translateX(45vw);
+}
+
+/*Message défilant */
+.msg-poste {
+  position: absolute;
+  /*la section écran-accueil - 5vh */
+  top: 85vh;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  color: var(--couleur2);
+  /*utilise la même animation que le slogan h2 (header)*/
+  animation: anim-slogan 40s infinite linear reverse;
+}
+
+
+/*Google material-symbols-outlined */
+
+.ecran-accueil .material-symbols-outlined:not(.fleche-accueil) {
+  color: var(--noir);
+  font-size: 1.8rem;
+}
+
+.i-premier {
+  padding-left: 2rem;
+}
+
+.i-visibilite {
+  display: none;
+}
+
+.ampoule {
+  transform: rotate(-15deg);
+}
+
+.filtre-alt {
+  transform: rotate(-170deg);
+}
+
+.note {
+  transform: rotate(-25deg);
+}
+
+/*SECTION 
+******des Produits vedettes
+===================================================================================*/
+
+.produits-bt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+ margin-top: 0vh;
+}
+
+.produits-vedettes {
+  display: flex;
+  flex-direction: column;
+}
+
+.vedettes-titres {
+  display: flex;
+  justify-content: center;
+  padding-top: 1.82rem;
+  gap: 1.4rem;
+}
+
+.vedettes-titres a {
+  color: var(--couleur2);
+  font-size: 0.9rem;
+  letter-spacing: -0.03rem;
+  opacity: 0.5;
+}
+
+.vedettes-titres > .titre-actif a {
+  opacity: 1;
+}
+
+.vedettes-boite {
+  width: 100%;
+  margin: 0.8rem 0 1.2rem 0;
+  display: grid;
+  grid-template-columns: 6 * 1fr;
+  grid-template-areas: "1 2 3 4 5 6";
+  grid-gap: 0.5rem;
+  overflow-x: scroll;
+}
+
+.boite-produit {
+  position: relative;
+  width: 7.4rem;
+  height: 9.4rem;
+  background-color: var(--couleur1);
+}
+
+/* Icone google ajouter */
+.i-produit-ajouter {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.2rem;
+  color: var(--couleur1);
+  z-index: 50;
+}
+
+.i-produit-ajouter:hover,
+.i-produit-ajouter:active {
+  color: var(--couleur2);
+  cursor: pointer;
+}
+
+/* Icone google favorite */
+.i-coeur {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0.2rem 0.2rem 0.8rem 0.2rem;
+  color: var(--clair);
+  z-index: 50;
+}
+
+.boite-produit-photo {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 7rem;
+  background-size: cover;
+  transition: transform 400ms;
+}
+
+.boite-produit-photo:hover,
+.boite-produit-photo:active {
+  transform: scale(110%);
+  cursor: pointer;
+}
+
+.boite-produit-info {
+  position: absolute;
+  bottom: 0;
+}
+
+.boite-produit-info h4 {
+  font-size: 0.68rem;
+  padding: 0rem 0.2rem 0rem 0.2rem;
+  color: var(--couleur2);
+}
+
+.boite-produit-info h5 {
+  font-size: 0.5rem;
+  padding: 0.2rem 0.2rem 0.4rem 0.2rem;
+  color: var(--gris-pale);
+}
+
+/*       URL DES IMAGES DE PRODUITS        **********************************************************/
+/*********************************************************PREMIÈRE RANGÉE*****************/
+.boite-produit-photo-1 {
+  background-image: url(../media/produits/access_1.jpg);
+}
+.boite-produit-photo-2 {
+  background-image: url(../media/produits/altern_1.jpg);
+}
+.boite-produit-photo-3 {
+ background-image: url(../media/produits/papier_1.jpg);
+}
+.boite-produit-photo-4 {
+  background-image: url(../media/produits/access_11.jpg);
+}
+.boite-produit-photo-5 {
+  background-image: url(../media/produits/film_12.jpg);
+}
+.boite-produit-photo-6 {
+  background-image: url(../media/produits/access_16.jpg);
+}
+/********************************************************DEUXIÈME RANGÉE*****************/
+.boite-produit-photo-7 {
+  background-image: url(../media/produits/film_14.jpg);
+}
+.boite-produit-photo-8 {
+  background-image: url(../media/produits/papier_4.jpg);
+}
+.boite-produit-photo-9 {
+ background-image: url(../media/produits/produit_7.jpg);
+}
+.boite-produit-photo-10 {
+  background-image: url(../media/produits/film_17.jpg);
+}
+.boite-produit-photo-11 {
+  background-image: url(../media/produits/film_6.jpg);
+}
+.boite-produit-photo-12 {
+  background-image: url(../media/produits/produit_6.jpg);
+}
+/*********************************************************TROISIÈME RANGÉE***************/
+.boite-produit-photo-13 {
+  background-image: url(../media/produits/film_5.jpg);
+}
+.boite-produit-photo-14 {
+  background-image: url(../media/produits/film_2.jpg);
+}
+.boite-produit-photo-15 {
+ background-image: url(../media/produits/papier_7.jpg);
+}
+.boite-produit-photo-16 {
+  background-image: url(../media/produits/film_4.jpg);
+}
+.boite-produit-photo-17 {
+  background-image: url(../media/produits/foma.jpg);
+}
+.boite-produit-photo-18 {
+  background-image: url(../media/produits/papier_8.jpg);
+}
+
+
+/* FOOTER
+         ======================================================================================================================================*/
+         #footer {
+          background-color: var(--couleur1);
+        }
+.boite-pied {
+  /*on enlève la hauteur du header fixe */
+  position: relative;
+width: 100vw;
+height: 90vh;
+bottom: 0;
+left: 50%;
+transform: translateX(-50%);
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: center;
+gap: var(--espacement);
+padding: var(--espacement);
+animation: changer-couleur 14s infinite;
+}
+
+ /* Animations CSS: changer-couleur
+        =============================================== */
+        @keyframes changer-couleur {
+          from,
+          to {
+              background-color: var(--clair);
+          }
+          30%,
+          80% {
+              background-color: var(--couleur1);
+          }
+          50% {
+            background-color: var(--clair);
+          }
+      }
+
+.boite-pied h3 {
+  color: var(--couleur2);
+  font-size: 1rem;
+  letter-spacing: -0.02rem;
+}
+
+.boite-pied a {
+  color: var(--noir);
+}
+
+.boite-distributeur {
+  margin-top: 2rem;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+
+.pied-foma-texte {
+  width: 70vw;
+  padding-left: var(--espacement);
+  align-self: center;
+  animation: changer-couleur-texte 14s infinite;
+}
+
+ /* Animations CSS: changer-couleur-texte
+        =============================================== */
+        @keyframes changer-couleur-texte {
+          from,
+          to {
+              color: var(--noir)
+          }
+          30%,
+          80% {
+              color: var(--clair)
+          }
+          50% {
+              color: var(--noir)
+          }
+      }
+
+.pied-foma-texte span {
+  color: var(--couleur2);
+}
+
+
+/* Boîte infolettre
+===========================================================================*/
+
+.boite-infolettre {
+  position: relative;
+  padding: 0.5rem;
+  background-color: var(--clair);
+  border: 0.1rem solid var(--couleur1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.boite-infolettre {
+  text-align: center;
+}
+
+.infolettre-input {
+  width: 85%;
+}
+
+.boite-infolettre input[type="text"] {
+  width: 100%;
+  font-size: 0.6rem;
+  background-color: var(--clair);
+}
+
+.boite-infolettre .icone-retour {
+  position: absolute;
+  right: 0;
+  top: 20%;
+  color: var(--couleur1);
+  padding-right: 0.8rem;
+}
+
+.boite-infolettre .icone-retour:hover {
+  color: #e04000;
+}
+
+.engagement p {
+font-size: 0.7rem;
+}
+
+.boite-liens {
+column-count: 3;
+padding: 0 var(--espacement);
+}
+
+.engagement p,
+.boite-liens a,
+.notice-legale {
+font-size: 0.6rem;
+}
+
+.boite-liens a:first-of-type {
+  white-space: nowrap;
+}
+
+.notice-legale {
+  justify-content: flex-end;
+  align-self: center;
+  padding: 1.5rem 0rem;
+}
+
+
+/* Requêtes média
+         =======================================================================================================            Requêtes média*/
+
+/* ÉCRANS MOYENS
+============================================================================================================================*/
+@media screen and (min-width: 768px) {
+ 
+  html {
+   font-size: clamp(16px, var(--espacement) + 2vw, 24px);
+  }
+  
+  
+   /* le header change de couleur */
+   header {
+     height: 15vh;
+     background-color: var(--clair);
+     border-bottom: 0.1rem solid var(--gris-pale);
+     justify-content: center;
+   }
+ 
+
+   /* ==================== H1 H1 H1 ================================
+ ===========================================================================*/
+ .nom {
+   position: absolute;
+   top: 10vh;
+   font-size: 2rem;
+   /***NE FONCTIONNE PAS ET RIEN AU-DESSUS ***/
+   z-index: 10000;
+ }
+ 
+ .nom h1 {
+   z-index: 10000;
+ }
+ 
+ .accueil-rq {
+  display: inline;
+}
+
+ 
+   /********** la barre des langues va en haut de l'écran ***********/
+   .nav-langue {
+     position: absolute;
+     top: 0;
+     right: 0;
+     height: 1.3rem;
+     margin: 0.2rem var(--espacement);
+     display: flex;
+     justify-content: flex-end;
+ 
+   }
+ 
+   .nav-langue-lien {
+     width: 1.2rem;
+     height: 1.3rem;
+   }
+ 
+   /**************** le menu burger n'est pas visible ***************/
+   .menu-burger-bouton,
+   .menu-burger-conteneur > * {
+     display: none;
+   }
+ 
+   /****************** la barre du menu est en rangée ****************/
+   .header-barre-gauche,
+   .header-barre-droite {
+     display: flex;
+     flex-direction: row;
+     align-items: flex-end;
+     justify-content: space-evenly;
+     flex: 1 0 0;
+   }
+ 
+   /* les liens sont visibles */
+   #procedes,
+   #produits,
+   #faq {
+     display: flex;
+   }
+ 
+   #accueil {
+     text-align: center;
+     font-size: 2rem;
+     opacity: 1;
+     padding: 0;
+   }
+ 
+   .barre-sous-titre-mq {
+     font-size: 0.6rem;
+     opacity: 1;
+   }
+ 
+   #compte a,
+   .icone-recherche,
+   .icone-panier,
+   .icone-descendre {
+     color: var(--couleur1);
+     transform: translateY(0.2rem);
+   }
+ 
+   #compte a {
+     letter-spacing: normal;
+   }
+ 
+   #procedes,
+   #produits,
+   #faq, 
+   #compte {
+     font-size: 0.9rem;
+   }
+   /***************** Annonces défilantes *******************/
+ 
+   
+ /* MAIN
+          ======================================================================================================================================*/
+ main {
+     /*on enlève la hauteur du header */
+     top: 15vh;
+     margin-bottom: 20vh;
+    
+ }
+ 
+ 
+ /* SECTION
+          =================================================================================================*/
+ /* Écran d'accueil 
+ ===================================================================================*/
+ 
+ .ecran-accueil {
+   height: 85vh;
+   z-index: 100;
+ }
+ 
+ .boite-accueil:first-child  {
+   transform: translateX(50%);
+ }
+ 
+ .boite-accueil:nth-child(2)  {
+   transform: translateX(20%);
+ }
+ 
+ .boite-accueil:nth-child(3)  {
+   transform: translateX(40%);
+ }
+
+.boite-accueil:hover .fleche-accueil,
+.boite-accueil:active .fleche-accueil {
+  transform: scale(1.7, 1.3) translateX(22vw);
+}
+ 
+ .msg-poste {
+   top: 80vh;
+ }
+
+ .produits-bt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+ margin-top: -12vh;
+}
+ 
+ .produits-vedettes {
+ width: 78%;
+ position: relative;
+ top: 15vh;
+ }
+
+ 
+ .vedettes-titres a {
+   font-size: 1rem;
+ }
+ 
+ .ligne-vide {
+  display: none;
+ }
+ 
+ 
+ /* FOOTER
+  ======================================================================================================================================*/
+   .boite-pied {
+       /*on enlève la hauteur du header */
+
+
+ }
+
+
+
+ .infolettre-position {
+  transform: translate(10vh, -1.2vh);
+ }
+ 
+ .engagement {
+   padding: 0 3rem;
+ }
+ 
+ .engagement p {
+   font-size: 0.7rem;
+ }
+ 
+ .boite-liens {
+   column-count: 4;
+ }
+ 
+ .notice-legale {
+   padding: var(--espacement);
+ }
+ 
+ }
+ 
+ .ligne-vide {
+  display: block;
+  height: 80px;
+ }
+ 
+ /* GRANDS ÉCRANS
+ ============================================================================================================================*/
+ @media screen and (min-width: 1200px) {
+   body {
+     width: 90%;
+   }
+ 
+   .vedettes-titres a {
+     font-size: 1.2rem;
+   }
+ 
+   .vedettes-boite {
+     overflow: hidden;
+   }
+ 
+   .boite-pied {
+     gap: 2rem;
+   }
+ 
+   .engagement {
+     padding: 0 20vw;
+   }
+   
+   .boite-produit {
+     width: 8.4rem;
+     height: 10.2rem;
+   }
+ 
+  .boite-produit-photo {
+ height: 8rem;
+ }
+ 
+ 
+ /*       URL DES IMAGES DE PRODUITS        **********************************************************/
+ /*********************************************************PREMIÈRE RANGÉE*****************/
+ .boite-produit-photo-1 {
+   background-image: url(../media/produits/1200/access_1.jpg);
+ }
+ .boite-produit-photo-2 {
+   background-image: url(../media/produits/1200/altern_1.jpg);
+ }
+ .boite-produit-photo-3 {
+  background-image: url(../media/produits/1200/papier_1.jpg);
+ }
+ .boite-produit-photo-4 {
+   background-image: url(../media/produits/1200/access_11.jpg);
+ }
+ .boite-produit-photo-5 {
+   background-image: url(../media/produits/1200/film_12.jpg);
+ }
+ .boite-produit-photo-6 {
+   background-image: url(../media/produits/1200/access_16.jpg);
+ }
+ /********************************************************DEUXIÈME RANGÉE*****************/
+ .boite-produit-photo-7 {
+   background-image: url(../media/produits/1200/film_14.jpg);
+ }
+ .boite-produit-photo-8 {
+   background-image: url(../media/produits/1200/papier_4.jpg);
+ }
+ .boite-produit-photo-9 {
+  background-image: url(../media/produits/1200/produit_7.jpg);
+ }
+ .boite-produit-photo-10 {
+   background-image: url(../media/produits/1200/film_17.jpg);
+ }
+ .boite-produit-photo-11 {
+   background-image: url(../media/produits/1200/film_6.jpg);
+ }
+ .boite-produit-photo-12 {
+   background-image: url(../media/produits/1200/produit_6.jpg);
+ }
+ /*********************************************************TROISIÈME RANGÉE***************/
+ .boite-produit-photo-13 {
+   background-image: url(../media/produits/1200/film_5.jpg);
+ }
+ .boite-produit-photo-14 {
+   background-image: url(../media/produits/1200/film_2.jpg);
+ }
+ .boite-produit-photo-15 {
+  background-image: url(../media/produits/1200/papier_7.jpg);
+ }
+ .boite-produit-photo-16 {
+   background-image: url(../media/produits/1200/film_4.jpg);
+ }
+ .boite-produit-photo-17 {
+   background-image: url(../media/produits/1200/foma.jpg);
+ }
+ .boite-produit-photo-18 {
+   background-image: url(../media/produits/1200/papier_8.jpg);
+ }
+ 
+ }
+ 

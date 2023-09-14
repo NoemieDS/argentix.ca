@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="fr-ca">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- On empêche de pouvoir zoomer à l'extérieur du site et voir ce qui déborder
+    du cadre, parce que ça me rend folle (max-width ne corrige
+    pas ce problème)-->
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,minimum-scale=1.0,viewport-fit=cover"
+    />
+    <title>Refonte de Argentix.Ca</title>
+
+    <!-- Intégration des polices de caractères Google-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Intégration des polices d'icônes Google -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <!-- Intégration des styles CSS -->
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!----- Case à cocher-- -->
+    <input type="checkbox" id="cc-menu-burger" />
+
+    <!-------------------------------------- HEADER -------------------------------------------------->
+
+    <header>
+      <h1 class="nom apparition">Argentix.Ca</h1>
+      <h2 class="slogan-accueil">
+        Bienvenue chez votre détaillant en ligne de matériel photographique.
+        Bienvenue chez votre détaillant en ligne de matériel photographique.
+        Bienvenue chez votre détaillant en ligne de matériel photographique.
+        Bienvenue chez votre détaillant en ligne de matériel photographique.
+      </h2>
+
+      <!--Barre des langues-->
+      <div class="nav-langue">
+        <div class="nav-langue-lien langue-active"><a href="">Fr</a></div>
+        <div class="nav-langue-lien"><a href="">En</a></div>
+      </div>
+
+      <!---------- Boite / Zone de recherche ------------->
+      <div class="boite-recherche">
+        <!-- Icone Google : search -->
+        <div>
+          <span class="material-symbols-outlined icone-recherche">search</span>
+        </div>
+        <div class="recherche-input">
+          <input type="text" placeholder="Mot clé, nom, catégorie" />
+        </div>
+        <!-- Icone Google : keyboard_return-->
+        <div>
+          <span class="material-symbols-outlined icone-retour"
+            >keyboard_return</span
+          >
+        </div>
+      </div>
+
+      <!---------------------Barre fixe avec menu divisée en 3 parties -------------------------->
+
+      <div class="header-barre">
+        <!-------------------------- 1- Partie de gauche ---------------------------------------->
+
+        <div class="header-barre-gauche">
+          <!-- Bouton burger-->
+          <label for="cc-menu-burger" class="menu-burger-bouton">
+            <!-- Icone Google : menu -->
+            <span
+              class="material-symbols-outlined icone-menu bouton-icone-ouvrir"
+              >menu</span
+            >
+
+            <span
+              class="material-symbols-outlined icone-menu bouton-icone-fermer"
+              >close</span
+            >
+          </label>
+
+          <!----- Pour version ordi, tablette-- -->
+          <a id="procedes" href="">Procédés</a>
+          <a id="produits" href="">Produits</a>
+          <a id="faq" href="">Faq</a>
+        </div>
+
+        <!-------------------------- 2- Partie du centre ---------------------------------------->
+        <div class="header-barre-centre">
+          <a id="accueil" href="">Argentix.Ca</a>
+          <h2 class="barre-sous-titre barre-sous-titre-mq">
+            Bienvenue chez votre détaillant en <br />
+            ligne de matériel photographique
+          </h2>
+        </div>
+
+        <!-------------------------- 3- Partie de droite ---------------------------------------->
+        <div class="header-barre-droite">
+          <div id="compte"><a href="">Compte</a></div>
+
+          <div class="header-droite-gr2">
+            <a id="recherche" href="">
+              <!-- Icone Google : search -->
+              <span class="material-symbols-outlined icone-recherche"
+                >search</span
+              ></a
+            >
+
+            <a class="panier" href="">
+              <!-- Icone Google : shopping_cart -->
+              <span class="material-symbols-outlined icone-panier"
+                >shopping_cart</span
+              ></a
+            >
+
+            <a id="haut-accueil" class="fleche-haut-bas" href="#footer">
+              <!-- Icone Google : arrow_downward -->
+              <span class="material-symbols-outlined icone-descendre"
+                >arrow_downward</span
+              ></a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-------------------------- MENU BURGER - Téléphone ---------------------------------------->
+
+      <div class="menu-burger-conteneur">
+        <nav class="nav-conteneur">
+          <ul>
+            <li><a href="">Accueil</a></li>
+            <li>
+              <a href=""
+                >Procédés
+                <!-- Icone Google : keyboard_return-->
+                <span class="material-symbols-outlined r180deg icone-retour"
+                  >keyboard_return</span
+                ></a
+              >
+            </li>
+
+            <li>
+              <a href=""
+                >Produits
+                <!-- Icone Google : keyboard_return-->
+                <span class="material-symbols-outlined r180deg icone-retour"
+                  >keyboard_return</span
+                ></a
+              >
+            </li>
+            <li><a href="">Faq</a></li>
+            <li><a href="">Rechercher</a></li>
+            <li><a href="">Mon compte</a></li>
+            <li><a href="">Panier</a></li>
+            <li><a href="">Contactez-&nbsp;nous</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-------------------------- FIN HEADER ---------------------------------------->
+
+    <!-------------------------------------- MAIN ---------------------------------------------------->
+    <main>
+      <span class="slogan-accueil accueil-rq">
+        Bienvenue chez votre détaillant en ligne de matériel photographique.
+        Bienvenue chez votre détaillant en ligne de matériel photographique.
+        Bienvenue chez votre détaillant en ligne de matériel photographique.
+        Bienvenue chez votre détaillant en ligne de matériel photographique.
+      </span>
+      <span class="nom apparition accueil-rq">Argentix.Ca</span>
+      <section class="ecran-accueil">
+  
+        <div class="boite-accueil premierElMain">
+          <h3 class="accueil-h3">Capter</h3>
+          <!-- Icone Google : arrow_forward -->
+          <span class="material-symbols-outlined r-180deg fleche-accueil"
+            >arrow_forward</span
+          >
+
+          <!-- Icone Google : nature_people -->
+          <span class="material-symbols-outlined i-premier">nature_people</span>
+
+          <!-- Icone Google : photo_camera -->
+          <span class="material-symbols-outlined">photo_camera</span>
+
+          <!-- Icone Google : camera_roll -->
+          <span class="material-symbols-outlined">camera_roll</span>
+
+          <!-- Icone Google : camera -->
+          <span class="material-symbols-outlined i-visibilite">camera</span>
+
+          <!-- Icone Google : aspect_ratio -->
+          <span class="material-symbols-outlined i-visibilite"
+            >aspect_ratio</span
+          >
+        </div>
+
+        <div class="boite-accueil">
+          <h3 class="accueil-h3">Développer</h3>
+          <span class="material-symbols-outlined r-180deg fleche-accueil"
+            >arrow_forward</span
+          >
+
+          <!-- Icone Google : wb_incandescent-->
+          <span class="material-symbols-outlined i-premier ampoule"
+            >wb_incandescent</span
+          >
+
+          <!-- Icone Google : filter_alt -->
+          <span class="material-symbols-outlined filtre-alt">filter_alt</span>
+
+          <!-- Icone Google : timer -->
+          <span class="material-symbols-outlined">timer</span>
+
+          <!-- Icone Google : cameraswitch -->
+          <span class="material-symbols-outlined i-visibilite"
+            >cameraswitch</span
+          >
+        </div>
+
+        <div class="boite-accueil">
+          <h3 class="accueil-h3">Imprimer</h3>
+          <span class="material-symbols-outlined r-180deg fleche-accueil"
+            >arrow_forward</span
+          >
+
+          <span class="material-symbols-outlined i-premier">imagesmode</span>
+
+          <!-- Icone Google : contrast -->
+          <span class="material-symbols-outlined">contrast</span>
+
+          <!-- Icone Google : note -->
+          <span class="material-symbols-outlined">note</span>
+
+          <!-- Icone Google : photo_library -->
+          <span class="material-symbols-outlined i-visibilite"
+            >photo_library</span
+          >
+
+          <!-- Icone Google : print -->
+          <span class="material-symbols-outlined i-visibilite">print</span>
+        </div>
+
+        <h4 class="msg-poste msg-poste-1">
+          Posté du Canada maximum 48h après la réception de votre commande.
+          Posté du Canada maximum 48h après la réception de votre commande.
+          Posté du Canada maximum 48h après la réception de votre commande.
+          Posté du Canada maximum 48h après la réception de votre commande.
+        </h4>
+      </section>
+      <!-------------------------------------- MAIN : PRODUITS VEDETTES -------------------------------------------------->
+<div class="produits-bt">
+      <!---------------------------------Première rangée------------------------------------->
+      <section class="produits-vedettes">
+        <div class="vedettes-titres">
+          <h3><a href="">Populaires</a></h3>
+          <h3 class="titre-actif"><a href="">Nouveautés</a></h3>
+          <h3><a href="">Spéciaux</a></h3>
+        </div>
+
+        <div class="vedettes-boite">
+          <div class="boite-produit">
+            <!-- Icone Google : add_circle-->
+            <span class="material-icons i-produit-ajouter">add_circle</span>
+            <a href="">
+              <div class="boite-produit-photo boite-produit-photo-1"></div>
+              <div class="boite-produit-info">
+                <h4>Marque Sorte</h4>
+                <h5>Information principale</h5>
+              </div>
+            </a>
+            <!-- Icone Google : favorite -->
+            <span class="material-symbols-outlined i-coeur">favorite</span>
+          </div>
+
+          <div class="boite-produit">
+            <!-- Icone Google : add_circle-->
+            <span class="material-icons i-produit-ajouter">add_circle</span>
+            <a href="">
+              <div class="boite-produit-photo boite-produit-photo-2"></div>
+              <div class="boite-produit-info">
+                <h4>Marque Sorte</h4>
+                <h5>Information principale</h5>
+              </div>
+            </a>
+            <!-- Icone Google : favorite -->
+            <span class="material-symbols-outlined i-coeur">favorite</span>
+          </div>
+
+          <div class="boite-produit">
+            <!-- Icone Google : add_circle-->
+            <span class="material-icons i-produit-ajouter">add_circle</span>
+            <a href="">
+              <div class="boite-produit-photo boite-produit-photo-3"></div>
+              <div class="boite-produit-info">
+                <h4>Marque Sorte</h4>
+                <h5>Information principale</h5>
+              </div></a
+            >
+            <!-- Icone Google : favorite -->
+            <span class="material-symbols-outlined i-coeur">favorite</span>
+          </div>
+
+          <div class="boite-produit">
+            <!-- Icone Google : add_circle-->
+            <span class="material-icons i-produit-ajouter">add_circle</span>
+            <a href="">
+              <div class="boite-produit-photo boite-produit-photo-4"></div>
+              <div class="boite-produit-info">
+                <h4>Marque Sorte</h4>
+                <h5>Information principale</h5>
+              </div></a
+            >
+            <!-- Icone Google : favorite -->
+            <span class="material-symbols-outlined i-coeur">favorite</span>
+          </div>
+
+          <div class="boite-produit">
+            <!-- Icone Google : add_circle-->
+            <span class="material-icons i-produit-ajouter">add_circle</span>
+            <a href="">
+              <div class="boite-produit-photo boite-produit-photo-5"></div>
+              <div class="boite-produit-info">
+                <h4>Marque Sorte</h4>
+                <h5>Information principale</h5>
+              </div></a
+            >
+            <!-- Icone Google : favorite -->
+            <span class="material-symbols-outlined i-coeur">favorite</span>
+          </div>
+
+          <div class="boite-produit">
+            <!-- Icone Google : add_circle-->
+            <span class="material-icons i-produit-ajouter">add_circle</span>
+            <a href="">
+              <div class="boite-produit-photo boite-produit-photo-6"></div>
+              <div class="boite-produit-info">
+                <h4>Marque Sorte</h4>
+                <h5>Information principale</h5>
+              </div></a
+            >
+            <!-- Icone Google : favorite -->
+            <span class="material-symbols-outlined i-coeur">favorite</span>
+          </div>
+        </div>
+      </section>
+
+      <!---------------------------------Deuxième rangée------------------------------------->
+      <section class="produits-vedettes">
+        <div class="vedettes-titres">
+          <h3 class="titre-actif"><a href="">Argentique</a></h3>
+          <h3><a href="">Couleurs</a></h3>
+          <h3><a href="">Alternatifs</a></h3>
+        </div>
+
+        <div class="vedettes-boite">
+          <div class="boite-produit">
+            <!-- Icone Google : add_circle-->
+            <span class="material-icons i-produit-ajouter">add_circle</span>
+            <a href="">
+              <div class="boite-produit-photo boite-produit-photo-7"></div>
+              <div class="boite-produit-info">
+                <h4>Marque Sorte</h4>
+                <h5>Information principale</h5>
+              </div>
+            </a>
+            <!-- Icone Google : favorite -->
+            <span class="material-symbols-outlined i-coeur">favorite</span>
+          </div>
+
+          <div class="boite-produit">
+            <!-- Icone Google : add_circle-->
+            <span class="material-icons i-produit-ajouter">add_circle</span>
+            <a href="">
+              <div class="boite-produit-photo boite-produit-photo-8"></div>
+              <div class="boite-produit-info">
+                <h4>Marque Sorte</h4>
+                <h5>Information principale</h5>
+              </div>
+            </a>
+            <!-- Icone Google : favorite -->
+            <span class="material-symbols-outlined i-coeur">favorite</span>
+          </div>
+
+          <div class="boite-produit">
+            <!-- Icone Google : add_circle-->
+            <span class="material-icons i-produit-ajouter">add_circle</span>
+            <a href="">
+              <div class="boite-produit-photo boite-produit-photo-9"></div>
+              <div class="boite-produit-info">
+                <h4>Marque Sorte</h4>
+                <h5>Information principale</h5>
+              </div></a
+            >
+            <!-- Icone Google : favorite -->
+            <span class="material-symbols-outlined i-coeur">favorite</span>
+          </div>
+
+          <div class="boite-produit">
+            <!-- Icone Google : add_circle-->
+            <span class="material-icons i-produit-ajouter">add_circle</span>
+            <a href="">
+              <div class="boite-produit-photo boite-produit-photo-10"></div>
+              <div class="boite-produit-info">
+                <h4>Marque Sorte</h4>
+                <h5>Information principale</h5>
+              </div></a
+            >
+            <!-- Icone Google : favorite -->
+            <span class="material-symbols-outlined i-coeur">favorite</span>
+          </div>
+
+          <div class="boite-produit">
+            <!-- Icone Google : add_circle-->
+            <span class="material-icons i-produit-ajouter">add_circle</span>
+            <a href="">
+              <div class="boite-produit-photo boite-produit-photo-11"></div>
+              <div class="boite-produit-info">
+                <h4>Marque Sorte</h4>
+                <h5>Information principale</h5>
+              </div></a
+            >
+            <!-- Icone Google : favorite -->
+            <span class="material-symbols-outlined i-coeur">favorite</span>
+          </div>
+
+          <div class="boite-produit">
+            <!-- Icone Google : add_circle-->
+            <span class="material-icons i-produit-ajouter">add_circle</span>
+            <a href="">
+              <div class="boite-produit-photo boite-produit-photo-12"></div>
+              <div class="boite-produit-info">
+                <h4>Marque Sorte</h4>
+                <h5>Information principale</h5>
+              </div></a
+            >
+            <!-- Icone Google : favorite -->
+            <span class="material-symbols-outlined i-coeur">favorite</span>
+          </div>
+        </div>
+      </section>
+
+      <!---------------------------------Troisième rangée------------------------------------->
+      <section class="produits-vedettes">
+        <div class="vedettes-titres">
+          <h3 class="titre-actif">
+            <a href="">Distributeur canadien des produits FOMA</a>
+          </h3>
+        </div>
+
+        <div class="vedettes-boite">
+          <div class="boite-produit">
+            <!-- Icone Google : add_circle-->
+            <span class="material-icons i-produit-ajouter">add_circle</span>
+            <a href="">
+              <div class="boite-produit-photo boite-produit-photo-13"></div>
+              <div class="boite-produit-info">
+                <h4>Marque Sorte</h4>
+                <h5>Information principale</h5>
+              </div>
+            </a>
+            <!-- Icone Google : favorite -->
+            <span class="material-symbols-outlined i-coeur">favorite</span>
+          </div>
+
+          <div class="boite-produit">
+            <!-- Icone Google : add_circle-->
+            <span class="material-icons i-produit-ajouter">add_circle</span>
+            <a href="">
+              <div class="boite-produit-photo boite-produit-photo-14"></div>
+              <div class="boite-produit-info">
+                <h4>Marque Sorte</h4>
+                <h5>Information principale</h5>
+              </div>
+            </a>
+            <!-- Icone Google : favorite -->
+            <span class="material-symbols-outlined i-coeur">favorite</span>
+          </div>
+
+          <div class="boite-produit">
+            <!-- Icone Google : add_circle-->
+            <span class="material-icons i-produit-ajouter">add_circle</span>
+            <a href="">
+              <div class="boite-produit-photo boite-produit-photo-15"></div>
+              <div class="boite-produit-info">
+                <h4>Marque Sorte</h4>
+                <h5>Information principale</h5>
+              </div></a
+            >
+            <!-- Icone Google : favorite -->
+            <span class="material-symbols-outlined i-coeur">favorite</span>
+          </div>
+
+          <div class="boite-produit">
+            <!-- Icone Google : add_circle-->
+            <span class="material-icons i-produit-ajouter">add_circle</span>
+            <a href="">
+              <div class="boite-produit-photo boite-produit-photo-16"></div>
+              <div class="boite-produit-info">
+                <h4>Marque Sorte</h4>
+                <h5>Information principale</h5>
+              </div></a
+            >
+            <!-- Icone Google : favorite -->
+            <span class="material-symbols-outlined i-coeur">favorite</span>
+          </div>
+
+          <div class="boite-produit">
+            <!-- Icone Google : add_circle-->
+            <span class="material-icons i-produit-ajouter">add_circle</span>
+            <a href="">
+              <div class="boite-produit-photo boite-produit-photo-17"></div>
+              <div class="boite-produit-info">
+                <h4>Marque Sorte</h4>
+                <h5>Information principale</h5>
+              </div></a
+            >
+            <!-- Icone Google : favorite -->
+            <span class="material-symbols-outlined i-coeur">favorite</span>
+          </div>
+
+          <div class="boite-produit">
+            <!-- Icone Google : add_circle-->
+            <span class="material-icons i-produit-ajouter">add_circle</span>
+            <a href="">
+              <div class="boite-produit-photo boite-produit-photo-18"></div>
+              <div class="boite-produit-info">
+                <h4>Marque Sorte</h4>
+                <h5>Information principale</h5>
+              </div></a
+            >
+            <!-- Icone Google : favorite -->
+            <span class="material-symbols-outlined i-coeur">favorite</span>
+          </div>
+        </div>
+      </section>
+      <section class="produits-vedettes">
+        <div class="ligne-vide">
+        </div>
+        </section>
+</div>
+    </main>
+
+    <!-------------------------------------- FOOTER -------------------------------------------------->
+    <footer id="footer" class="boite-pied">
+      <div class="boite-distributeur">
+        <div class="logo-foma"><img src="media/foma.png" alt="" /></div>
+        <div class="pied-foma-texte">
+          <p>
+            Argentix.Ca est fier d'être votre distributeur canadien officiel des
+            produits <span> FOMA</span>.
+          </p>
+        </div>
+      </div>
+      <div class="boite-infolettre infolettre-position">
+        <h3>Inscrivez-vous à notre infolettre</h3>
+        <p>et obtenez 10% de rabais sur votre prochaine commande!</p>
+
+        <!---------- Boite infolettre ------------->
+        <div class="boite-infolettre">
+          <div class="infolettre-input">
+            <input type="text" placeholder="Adresse courriel" />
+          </div>
+          <!-- Icone Google : keyboard_return-->
+          <div>
+            <span class="material-symbols-outlined icone-retour"
+              >keyboard_return</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="pied-elt engagement">
+        <h3>Notre engagement</h3>
+        <p>
+          Argentix.Ca s'engage à vous fournir des produits de la meilleure
+          qualité pour que vous puissiez mettre à profit votre création
+          visuelle. <br /><br />
+          Tous nos produits sont couverts par une garantie du fabricant. En cas
+          de problème, veuillez nous contacter et nous établirons une stratégie
+          visant une satisfaction commune.
+        </p>
+      </div>
+      <div class="boite-liens">
+        <ul>
+          <li></li>
+          <li><a href="">Contactez-nous</a></li>
+          <li><a href="">Emploi</a></li>
+          <li><a href="">Facebook</a></li>
+          <li><a href="">Politiques</a></li>
+          <li><a href="">Commentaires</a></li>
+          <li><a href="">Instagram</a></li>
+          <li><a href="">Vie privée</a></li>
+        </ul>
+      </div>
+      <div class="notice-legale">&copy; Argentix.Ca. Tous droits réservés.</div>
+    </footer>
+  <script src="js/index.js"></script> 
+  </body>
+</html>
